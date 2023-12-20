@@ -5,7 +5,7 @@ import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-combinations";
 import GameOver from "./components/GameOver";
 
-const PLAYERS = {
+const INITIAL_PLAYERS = {
   X: "Player 1",
   O: "Player 2",
 };
@@ -62,7 +62,7 @@ function deriveGameBoard(gameTurns) {
 }
 
 function App() {
-  const [players, setPlayers] = useState(PLAYERS);
+  const [players, setPlayers] = useState(INITIAL_PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
 
   const activePlayer = deriveActivePlayer(gameTurns);
@@ -102,13 +102,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName={PLAYERS.X}
+            initialName={INITIAL_PLAYERS.X}
             symbol="X"
             isActive={activePlayer === "X"}
             onChangeName={handlePlayerNameChange}
           />
           <Player
-            initialName={PLAYERS.O}
+            initialName={INITIAL_PLAYERS.O}
             symbol="O"
             isActive={activePlayer === "O"}
             onChangeName={handlePlayerNameChange}
